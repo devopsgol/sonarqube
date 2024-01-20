@@ -3,7 +3,13 @@
         label 'slave-devopsgol'
         }
         stages {
-         
+
+        stage("Git Checkout"){
+            steps{
+                checkout scm
+            }
+        }
+
           stage("build & sonarqube") {
             agent any
             steps {
