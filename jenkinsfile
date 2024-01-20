@@ -1,11 +1,13 @@
      pipeline {
-        agent none
+        agent {
+        label 'slave-devopsgol'
+        }
         stages {
          
           stage("build & sonarqube") {
             agent any
             steps {
-              withSonarQubeEnv('Sona_TOKEN') {
+              withSonarQubeEnv('sonarqube-devops') {
                 sh 'mvn clean package sonar:sonar'
               }
             }
